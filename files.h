@@ -13,14 +13,21 @@
      GNU General Public License for more details.
 */
 
+char* writeFile(char* fname, char* fileContents) {
+    FILE *fptr;
+    fptr = fopen(fname, "w");
+    fprintf(fptr, fileContents);
+    fclose(fptr);
+}
+
 char* readFile(char* fpath) {
     FILE *fptr;
     fptr = fopen(fpath, "r");
 
-    char* fileContents[] = [];
+    char* fileContents;
 
     char* file = &fileContents;
-    char* fileTxt = [];
+    char* fileTxt;
 
     while(fgets(fileTxt, 99991, fptr)) {
         file[sizeof(file)] = fileTxt;
@@ -29,11 +36,4 @@ char* readFile(char* fpath) {
     fclose(fptr);
 
     return file;
-}
-
-char* writeFile(char* fname; char* fileContents) {
-    FILE *fptr;
-    fptr = fopen(fname, "w");
-    fprintf(fptr, fileContents);
-    fclose(fptr);
 }

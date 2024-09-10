@@ -1,5 +1,9 @@
 all: benc.c benc
-	$(CC) benc.c -o build/benc
+	rm -rf bin
+
+	mkdir bin
+	$(CC) benc.c -o bin/benc
+	mv benc bin/benc
 	echo "Done with target 'all'"
 
 install: benc
