@@ -1,4 +1,5 @@
 all: benc.c benc
+	cd src
 	$(CC) benc.c -o build/benc
 	echo "Done with target 'all'"
 
