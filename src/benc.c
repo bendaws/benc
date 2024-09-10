@@ -74,7 +74,11 @@ int main(int argc, char* argv[]) {
     }
 
     if (is_file) {
-        exit_code = bc_compile(flags[0]);
+        char* output_tps = bc_compile(flags[0]);
+
+        writeFile(("%s/tmp-1.c", argv[0]), output_tps);
+        exit_code = system(("gcc %s/tmp-1.c", argv[0]));
+        system("rm /tmp-1.c");
     }
 
     return exit_code;
