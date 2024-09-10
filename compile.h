@@ -1,82 +1,18 @@
-/*
-     Ben-C Transpiler
-     (C) Copyright 2024 Ben Daws.
-
-     This program is free software: you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+#include <string.h>
+#include <stdbool.h>
+
 #include "files.h"
 
-char split_characters[] = [' ', ';', ',', '+', '-', '*', '&', '/', '(', ')', '{', '}', '#'];
+#ifdef WIN32
+#include <io.h>
+#define access _access
+#endif
 
-bool is_split_character(char character)
+#define F_OK 0
 
-char* bc_compile(char* fpath) {
-    char* lines = readFile(fpath);
-
-    for (int i = 0; i < sizeof(lines); i++) {
-        // per line
-        bool dirty = false;
-        char* line = lines[i];
-        char* currentKeyword = "";
-        int keywordPos[] = [];
-
-        for (int j = 0; j < sizeof(line); j++) {
-            // per character
-            char thisChar = line[j];
-
-            if (is_split_character(thisChar) == true) {
-                currentKeyword = "";
-                keywordPos = [];
-            } else {
-                currentKeyword[sizeof(currentKeyword)] = thisChar;
-                keywordPos[sizeof(keywordPos)] = j;
-            }
-
-            switch (currentKeyword) {
-                case "string":
-                    // string, replace the keyword positions with each character
-                    char characters[] = ['c', 'h', 'a', 'r', '*'];
-
-                    for (int k = 0; i < sizeof(keywordPos); k++) {
-                        if (k == 4) {
-                            // shifts all characters 1 index ahead to effectively "remove" the extra character.
-                            int charsToMove = sizeof(line) - line[keywordPos[k]];
-
-                            for (int m = 0; m < charsToMove; m++) {
-                                // shift character ahead in the string
-                                line[m] = line[m + 1];
-                            }
-
-                            line[sizeof(line) - 1] = NULL; // finally, get rid of the last character (a dupe)
-                        } else {
-                            line[keywordPos[k] = characters[k];
-                        }
-                    }
-
-                    dirty = true;
-
-                    continue;
-                default:
-                    // ignore
-                    continue;
-            }
-        }
-    }
-
-    return lines;
-}
+char* split_characters = " ;,+-*&/(){}#";
 
 bool is_split_character(char character) {
     bool value = false;
@@ -88,4 +24,71 @@ bool is_split_character(char character) {
     }
 
     return value;
+}
+
+// Assuming readFile and is_split_character are defined elsewhere
+
+char* bc_compile(char* fpath) {
+    char* lines = readFile(fpath);
+    if (lines == NULL) {
+        return NULL;
+    }
+
+    size_t linesLength = strlen(lines);
+
+    for (size_t i = 0; i < linesLength; i++) {
+        // per line
+        bool dirty = false;
+        char* line = &lines[i];
+        char currentKeyword[256] = ""; // Assuming max keyword length is 255
+        int keywordPos[256] = {-1}; // Assuming max keyword length is 255
+        size_t keywordLength = 0;
+
+        size_t lineLength = strlen(line);
+
+        for (size_t j = 0; j < lineLength; j++) {
+            // per character
+            char thisChar = line[j];
+
+            if (is_split_character(thisChar)) {
+                currentKeyword[0] = '\0';
+                keywordLength = 0;
+            } else {
+                currentKeyword[keywordLength] = thisChar;
+                currentKeyword[keywordLength + 1] = '\0';
+                keywordPos[keywordLength] = j;
+                keywordLength++;
+            }
+
+            if (strcmp(currentKeyword, "string") == 0) {
+                // string, replace the keyword positions with each character
+                char characters[] = {'c', 'h', 'a', 'r', '*'};
+
+                for (size_t k = 0; k < keywordLength; k++) {
+                    if (k == 4) {
+                        // shifts all characters 1 index ahead to effectively "remove" the extra character.
+                        size_t charsToMove = lineLength - keywordPos[k];
+
+                        for (size_t m = keywordPos[k]; m < lineLength - 1; m++) {
+                            // shift character ahead in the string
+                            line[m] = line[m + 1];
+                        }
+
+                        line[lineLength - 1] = '\0'; // finally, get rid of the last character (a dupe)
+                    } else {
+                        line[keywordPos[k]] = characters[k];
+                    }
+                }
+
+                dirty = true;
+                break; // Exit the inner loop as we have processed the keyword
+            }
+        }
+
+        if (dirty) {
+            // Handle the dirty line if needed
+        }
+    }
+
+    return lines;
 }
