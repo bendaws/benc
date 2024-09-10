@@ -3,6 +3,10 @@ Ben-C is a general-purpose basic programming language inspired by C. It transpil
 
 ## Table of Contents
 - [Advantages](#advantages): Shows off some features of the language
+- [Installation](#installation): Install
+
+## Resources
+- [bc.tmbundle](https://github.com/btd2010/bc.tmbundle): Provides a grammar for Ben-C.
 
 ## Advantages
 ### Syntaxically simular
@@ -58,4 +62,14 @@ make
 Target ``install`` will install the binaries to ``/usr/local/bin``.
 ```
 make install
+```
+
+## Command Line
+Compile a file:
+```
+bc path/to/file.bc
+```
+Get version:
+```
+bc --version
 ```
