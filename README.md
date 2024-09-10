@@ -1,5 +1,9 @@
 # Ben-C ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/main.yml)
-Ben-C is a general-purpose basic programming language inspired by C. It transpiles to C code. It is close to about the same as C, but is also slightly different in keywords and use cases.
+Ben-C is a basic compiled programming language written, inspired, and designed around C. Ben-C is an extension of C, like C++, but Ben-C maps way closer to C in terms of uses. 
+
+> Important!
+>
+> Ben-C is still a very in-development language. It's current release ``v1.0.0-rc-2``, still segmentation faults while compiling code. It is not ready to use. v1.0.0 should be ready to use and stable.
 
 ## Table of Contents
 - [Advantages](#advantages): Shows off some features of the language
