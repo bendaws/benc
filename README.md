@@ -1,4 +1,4 @@
-# Ben-C ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/make.yml)
+# Ben-C ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/main.yml)
 Ben-C is a general-purpose basic programming language inspired by C. It transpiles to C code. It is close to about the same as C, but is also slightly different in keywords and use cases.
 
 ## Table of Contents
