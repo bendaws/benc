@@ -1,8 +1,8 @@
-# Ben-C ![issues](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/make.yml)
+# Ben-C ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/make.yml)
 Ben-C is a general-purpose basic programming language inspired by C/++ and Python. Unlike other ``#`` languages, it is not object-oriented. It is close to about the same as C, but is also slightly different in keywords and use cases.
 
 ## Table of Contents
-[Advantages](#advantages)
+- [Advantages](#advantages): Shows off some features of the language
 
 ## Advantages
 ### Syntaxically simular
