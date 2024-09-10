@@ -12,5 +12,5 @@
       steps:
       - name: checkout repo
         uses: actions/checkout@main
-      - name: build wool
-        run: make wool
+      - name: build benc
+        run: make all
