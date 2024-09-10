@@ -1,15 +1,15 @@
-all: benc.c benc
+all: src/benc.c benc
 	cd src
 	$(CC) benc.c -o build/benc
 	echo "Done with target 'all'"
 
-install:
+install: bin/benc
 	sudo cp bin/benc /usr/local/bin/benc
 	sudo cp bin/benc /usr/local/bin/bc
 
 	echo "Done with target 'install'"
 
-tests: scanning.bc string.bc
+tests: tests/scanning.bc tests/string.bc
 	cd tests
 	../bin/benc scanning.bc
 	../bin/benc string.bc
