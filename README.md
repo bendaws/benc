@@ -2,6 +2,7 @@
 Ben-C is a general-purpose basic programming language inspired by C/++ and Python. Unlike other ``#`` languages, it is not object-oriented. It is close to about the same as C, but is also slightly different in keywords and use cases.
 
 ## Table of Contents
+[Advantages](#advantages)
 
 ## Advantages
 ### Syntaxically simular
