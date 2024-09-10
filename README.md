@@ -47,3 +47,15 @@ char* string2 = "i am also a string";
 char string3[] = "i am also also a string";
 ```
 In the compiler, the ``string`` type is still just a ``char*``, so any header files used by C can still access it like a regular character array.
+
+## Installation
+You can use GNU Make to build and install Ben-C.
+```
+git clone https://github.com/btd2010/benc
+cd benc
+make
+```
+Target ``install`` will install the binaries to ``/usr/local/bin``.
+```
+make install
+```
