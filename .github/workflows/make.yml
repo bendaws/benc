@@ -1,0 +1,16 @@
+   name: Build Wool
+
+   on:
+     push:
+       branches: [ master ]
+     pull_request:
+       branches: [ master ]
+
+   jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - name: checkout repo
+        uses: actions/checkout@main
+      - name: build wool
+        run: make wool
