@@ -1,4 +1,4 @@
-   name: Build Wool
+   name: Build Ben-C
 
    on:
      push:
