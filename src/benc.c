@@ -1,5 +1,5 @@
 /*
-     Ben-C Transpier
+     Ben-C Transpiler
      (C) Copyright 2024 Ben Daws.
 
      This program is free software: you can redistribute it and/or modify
@@ -15,7 +15,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/delete.h"
+
+#include "compile.h"
 
 #define BC_VERSION "1.0.0"
 #define BC_COPYRIGHT "(C) Copyright 2024"
@@ -29,7 +30,6 @@ char* parse_flag(int argc, char* argv[]) {
             continue;
         case 2:
             char* flag = argv[2];
-            strdelete(flag, "--");
             flags = [flag];
             continue;
         default:
@@ -43,6 +43,7 @@ char* parse_flag(int argc, char* argv[]) {
 int main(int argc, char* argv[]) {
     int exit_code = 0; // set to exit code
     char* flags = parse_flag(argc, argv);
+    bool is_file = false;
 
     switch (flags[0]) {
         case "00n0":
@@ -60,9 +61,20 @@ int main(int argc, char* argv[]) {
             exit_code = 0;
             continue;
         default:
-            printf("bc: invalid option %s.\n", flags[0]);
-            exit_code = 1;
+            if (access(flags[0], F_OK) == 0) {
+                // file exists
+                exit_code = 0;
+                is_file = true;
+            } else {
+                // not a file, ignore it
+                printf("bc: invalid option %s.\n", flags[0]);
+                exit_code = 1;
+            }
             continue;
+    }
+
+    if (is_file) {
+        exit_code = bc_compile(flags[0]);
     }
 
     return exit_code;
