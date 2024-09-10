@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main() {
+    // important: strings in Ben-c are really just char*, so any char* header files should work with
+    // it. we test this with printf(), which takes input with a char* to display to the screen.
+    string output_str = "hello world";
+    printf(output_str);
+
+    return 0;
+}

@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main() {
+    string scanned_txt = ""; // initialize empty
+    scanf("%s", scanned_txt);
+    printf("%s", scanned_txt); // show output
+
+    return 0;
+}
