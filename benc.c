@@ -143,7 +143,7 @@ int main(int argc, char* argv[]) {
 
     char* flag = argv[1];
 
-    if (flags == "--version") {
+    if (flag == "--version") {
         printf("Ben-C compiler version %s\n", BC_VERSION);
         printf("%s\n", BC_COPYRIGHT);
         printf("This program comes with ABSOLUTELY NO WARRANTY;\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see https://www.gnu.org/licenses.\n");
