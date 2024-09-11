@@ -21,14 +21,14 @@
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Get Date
+      - name: set release date
         run: |
-           echo "time=$(date + "%Y-%m-%d")" >> $GITHUB_ENV
+          echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
       
       - name: Create a Release
         uses: elgohr/Github-Release-Action@v5
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          title: Daily build ${{ env.TIME }}
-          tag: nightly-${{ env.TIME }}
+          title: Daily build ${{ env.RELEASE_DATE }}
+          tag: nightly-${{ env.RELEASE_DATE }}
