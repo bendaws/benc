@@ -2,7 +2,7 @@
 
    on:
       schedule:
-      - cron: "15 18,6 * * *"   # <=== Change this value
+      - cron: "15 18 * * *"   # <=== Change this value
       workflow_dispatch:
        inputs:
          random:
@@ -25,15 +25,10 @@
         run: |
            echo "time=$(date + "%Y-%m-%d")" >> $GITHUB_ENV
       
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Create a Release
+        uses: elgohr/Github-Release-Action@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: nightly-${{ github.time }}
-          release_name: Nightly build ${{ github.time }}
-          body: |
-            Daily build of Ben-C.
-          draft: false
-          prerelease: false
+          title: Daily build ${{ env.TIME }}
+          tag: nightly-${{ env.TIME }}
