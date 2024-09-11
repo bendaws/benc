@@ -143,7 +143,7 @@ int main(int argc, char* argv[]) {
 
     char* flag = argv[1];
 
-    if (flags == "--version") {
+    if (flag == "--version") {
         printf("Ben-C compiler version %s\n", BC_VERSION);
         printf("%s\n", BC_COPYRIGHT);
         printf("This program comes with ABSOLUTELY NO WARRANTY;\nThis is free software, and you are welcome to redistribute it\nunder certain conditions; see https://www.gnu.org/licenses.\n");
@@ -155,13 +155,13 @@ int main(int argc, char* argv[]) {
             is_file = true;
         } else {
             // not a file, ignore it
-            printf("bc: invalid option %s.\n", flags[0]);
+            printf("bc: invalid option %s.\n", flag);
             exit_code = 1;
         }
     }
 
     if (is_file) {
-        char* output_tps = bc_compile(flags[0]);
+        char* output_tps = bc_compile(flag);
         char* location = "%s/tmp-1.c", argv[0];
 
         writeFile(location, output_tps);
