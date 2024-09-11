@@ -1,4 +1,5 @@
-# Ben-C ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/main.yml)
+# Ben-C ![Issues](https://img.shields.io/github/issues/btd2010/benc) ![Current Commit Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/main.yml) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/nightly.yml?label=nightly%20build)
+
 Ben-C is a basic compiled programming language written, inspired, and designed around C. Ben-C is an extension of C, like C++, but Ben-C maps way closer to C in terms of uses. 
 
 > Important!
