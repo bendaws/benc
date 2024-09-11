@@ -1,9 +1,9 @@
-# Ben-C ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/main.yml)
+# Ben-C v1.0.0 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/btd2010/benc) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/btd2010/benc/main.yml)
 Ben-C is a basic compiled programming language written, inspired, and designed around C. Ben-C is an extension of C, like C++, but Ben-C maps way closer to C in terms of uses. 
 
 > Important!
 >
-> Ben-C is still a very in-development language. It's current release ``v1.0.0-rc-2``, still segmentation faults while compiling code. It is not ready to use. v1.0.0 should be ready to use and stable.
+> Ben-C is still in development. It is usable, but is not recommended for regular usage yet.
 
 ## Table of Contents
 - [Advantages](#advantages): Shows off some features of the language
@@ -57,23 +57,30 @@ char string3[] = "i am also also a string";
 In the compiler, the ``string`` type is still just a ``char*``, so any header files used by C can still access it like a regular character array.
 
 ## Installation
+You can download a source release of the current stable build (v1.0.0) [here](https://github.com/btd2010/benc/releases).
+
 You can use GNU Make to build and install Ben-C.
-```
-git clone https://github.com/btd2010/benc
+```bash
+tar -xf benc-1.0.0.tar.gz # If you downloaded from a source release, extract the files
+git clone https://github.com/btd2010/benc # If you didn't, clone the current source
 cd benc
-make
+make all
 ```
 Target ``install`` will install the binaries to ``/usr/local/bin``.
-```
+```bash
 make install
+```
+Test a working compiler with target ``test``.
+```bash
+make tests
 ```
 
 ## Command Line
 Compile a file:
 ```
-bc path/to/file.bc
+ben-c path/to/file.bc
 ```
 Get version:
 ```
-bc --version
+ben-c --version
 ```
