@@ -2,7 +2,7 @@
 
    on:
       schedule:
-      - cron: "15 18 * * *"   # <=== Change this value
+      - cron: "00 17 * * *"   # <=== Change this value
       workflow_dispatch:
        inputs:
          random:
